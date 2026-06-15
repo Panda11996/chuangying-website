@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山西创映文化传媒有限公司</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #0b0a09;
+  --bg-surface: #141211;
+  --bg-elevated: #1c1a18;
+  --text-primary: #e7e3db;
+  --text-secondary: #a0988c;
+  --text-muted: #6b645c;
+  --accent: #c8a24e;
+  --accent-glow: #d4b36a;
+  --accent-subtle: rgba(200, 162, 78, 0.08);
+  --accent-border: rgba(200, 162, 78, 0.2);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: clamp(15px, 1.5vw, 18px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-deep);
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 1.2rem clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.5s var(--ease-out-expo), padding 0.5s var(--ease-out-expo);
+}
+.nav.scrolled {
+  background: rgba(11, 10, 9, 0.92);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  padding: 0.8rem clamp(1.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--accent-border);
+}
+.nav-logo {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--accent);
+  transition: width 0.4s var(--ease-out-expo);
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(2rem, 8vh, 6rem) clamp(1.5rem, 5vw, 4rem);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,162,78,0.06) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 50% at 80% 20%, rgba(200,162,78,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+.hero-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.3em;
+}
+.hero-title .highlight {
+  color: var(--accent);
+  display: block;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2.4rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  transition: all 0.4s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out-expo);
+  z-index: -1;
+}
+.hero-cta:hover { color: var(--bg-deep); }
+.hero-cta:hover::before { transform: scaleX(1); }
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(8px); }
+}
+
+/* ---------- Section Common ---------- */
+.section {
+  padding: clamp(4rem, 12vh, 9rem) clamp(1.5rem, 5vw, 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 8vw, 6rem);
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+.about-visual-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-emblem {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.3;
+  letter-spacing: 0.2em;
+}
+.about-text p {
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--accent-border);
+}
+.stat-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Services ---------- */
+.services {
+  background: var(--bg-surface);
+  max-width: none;
+  padding-left: clamp(1.5rem, 5vw, 4rem);
+  padding-right: clamp(1.5rem, 5vw, 4rem);
+}
+.services-inner { max-width: 1200px; margin: 0 auto; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 3rem;
+  background: var(--accent-border);
+}
+.service-card {
+  background: var(--bg-elevated);
+  padding: 2.5rem 2rem;
+  transition: background 0.4s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent-subtle);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+.service-card:hover { background: #1f1c19; }
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+}
+.service-card h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.03em;
+}
+.service-card p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ---------- License ---------- */
+.license {
+  border-top: 1px solid var(--accent-border);
+}
+.license-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 3rem;
+  margin-top: 2rem;
+}
+.license-item {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.license-key {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.25rem;
+}
+.license-value {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- Contact ---------- */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 8vw, 6rem);
+  align-items: start;
+}
+.contact-info p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+.contact-label {
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  min-width: 4em;
+  flex-shrink: 0;
+  padding-top: 0.2em;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contact-form input,
+.contact-form textarea {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 1rem 1.2rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+}
+.contact-form textarea { min-height: 120px; resize: vertical; }
+.contact-form button {
+  align-self: flex-start;
+  padding: 0.85rem 2.2rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out-expo);
+  font-weight: 500;
+}
+.contact-form button:hover {
+  background: var(--accent);
+  color: var(--bg-deep);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--accent-border);
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+}
+.footer p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  line-height: 2;
+}
+
+/* ---------- Server Notice ---------- */
+.server-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--accent-border);
+  padding: 0.7rem clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transform: translateY(100%);
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.server-bar.visible { transform: translateY(0); }
+.server-bar code {
+  background: var(--bg-deep);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.server-bar code:hover { background: #1f1c19; }
+.server-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.3rem 0.5rem;
+  transition: color 0.3s;
+}
+.server-close:hover { color: var(--text-primary); }
+
+/* ---------- Animations ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* Fade-in from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .license-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .server-bar { flex-direction: column; gap: 0.4rem; text-align: center; padding: 0.8rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">创映</a>
+  <ul class="nav-links">
+    <li><a href="#about">关于</a></li>
+    <li><a href="#services">服务</a></li>
+    <li><a href="#license">资质</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <p class="hero-label reveal">Shanxi Chuangying Culture Media</p>
+    <h1 class="hero-title reveal reveal-delay-1">
+      山西创映<span class="highlight">文化传媒</span>
+    </h1>
+    <p class="hero-sub reveal reveal-delay-2">
+      以创意为光影，以专业为底色——让每一次表达都掷地有声
+    </p>
+    <a href="#about" class="hero-cta reveal reveal-delay-3">探索更多</a>
+  </div>
+  <div class="hero-scroll">↓ 向下滚动</div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <p class="section-tag reveal">About</p>
+  <div class="about-grid">
+    <div class="about-visual reveal-left">
+      <div class="about-visual-inner">
+        <span class="about-emblem">创映</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <h2 class="section-title reveal">关于我们</h2>
+      <p class="reveal reveal-delay-1">
+        山西创映文化传媒有限公司成立于 2023 年，扎根于山西运城，是一家集文艺创作、品牌策划、广告设计与视频制作于一体的综合型文化传媒企业。
+      </p>
+      <p class="reveal reveal-delay-2">
+        我们汇聚策划、设计、影像等领域的专业力量，致力于为每一位客户提供从品牌策略到视觉落地的全链路解决方案。创映，不止于呈现，更在于创造共鸣。
+      </p>
+      <div class="about-stats reveal reveal-delay-3">
+        <div>
+          <div class="stat-number">152<small style="font-size:0.5em">万</small></div>
+          <div class="stat-label">注册资本</div>
+        </div>
+        <div>
+          <div class="stat-number">2023</div>
+          <div class="stat-label">创立年份</div>
+        </div>
+        <div>
+          <div class="stat-number">12+</div>
+          <div class="stat-label">服务板块</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section services" id="services">
+  <div class="services-inner">
+    <p class="section-tag reveal">Services</p>
+    <h2 class="section-title reveal">核心业务</h2>
+    <p class="section-desc reveal reveal-delay-1">覆盖创意策划、品牌设计与内容制作的完整服务链</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">&#9678;</div>
+        <h3>文艺创作</h3>
+        <p>剧本创作、内容策划、文化项目孵化，为品牌注入独特文化基因</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">&#9671;</div>
+        <h3>广告设计与发布</h3>
+        <p>品牌视觉设计、广告创意制作及多渠道投放代理</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">&#9650;</div>
+        <h3>品牌管理</h3>
+        <p>企业形象策划、品牌战略咨询、视觉识别系统建设</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">&#9632;</div>
+        <h3>摄像与视频制作</h3>
+        <p>宣传片、短视频、活动记录等专业影像制作服务</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">&#9674;</div>
+        <h3>会议展览</h3>
+        <p>活动策划执行、展会搭建、文化沙龙组织</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">&#9654;</div>
+        <h3>直播技术服务</h3>
+        <p>互联网直播技术支持、信息咨询服务</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- License -->
+<section class="section license" id="license">
+  <p class="section-tag reveal">Credentials</p>
+  <h2 class="section-title reveal">企业资质</h2>
+  <div class="license-grid reveal reveal-delay-1">
+    <div class="license-item">
+      <div class="license-key">统一社会信用代码</div>
+      <div class="license-value">91140802MACEN1B77F</div>
+    </div>
+    <div class="license-item">
+      <div class="license-key">法定代表人</div>
+      <div class="license-value">熊兵兵</div>
+    </div>
+    <div class="license-item">
+      <div class="license-key">注册资本</div>
+      <div class="license-value">壹佰伍拾贰万圆整</div>
+    </div>
+    <div class="license-item">
+      <div class="license-key">成立日期</div>
+      <div class="license-value">2023 年 04 月 21 日</div>
+    </div>
+    <div class="license-item">
+      <div class="license-key">登记机关</div>
+      <div class="license-value">运城市盐湖区行政审批服务管理局</div>
+    </div>
+    <div class="license-item">
+      <div class="license-key">住所</div>
+      <div class="license-value">山西省运城市盐湖区人民南路南风新都汇 9 号楼 304 室</div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <p class="section-tag reveal">Contact</p>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <h2 class="section-title reveal">联系我们</h2>
+      <p class="reveal reveal-delay-1"><span class="contact-label">地址</span>山西省运城市盐湖区人民南路南风新都汇 9 号楼 304 室</p>
+      <p class="reveal reveal-delay-2"><span class="contact-label">邮箱</span>contact@chuangying.media</p>
+      <p class="reveal reveal-delay-3" style="color:var(--text-muted);font-size:0.8rem;margin-top:2rem;">
+        期待与您携手，共创品牌价值
+      </p>
+    </div>
+    <form class="contact-form reveal reveal-delay-1" onsubmit="event.preventDefault(); alert('感谢您的留言，我们会尽快回复！');">
+      <input type="text" placeholder="您的姓名">
+      <input type="email" placeholder="电子邮箱">
+      <textarea placeholder="请简述您的需求..."></textarea>
+      <button type="submit">发送留言</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2023-2026 山西创映文化传媒有限公司 Shanxi Chuangying Culture Media Co., Ltd.<br>晋 ICP 备 00000000 号 | 互联网信息服务许可</p>
+</footer>
+
+<!-- Server Notice Bar -->
+<div class="server-bar" id="serverBar">
+  <span>&#9679; 本地访问中 · 分享给他人请用：</span>
+  <code id="serverAddr" title="点击复制">python3 -m http.server 8080</code>
+  <button class="server-close" onclick="document.getElementById('serverBar').classList.remove('visible')" title="关闭">&times;</button>
+</div>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left').forEach(el => observer.observe(el));
+
+// Server address display
+const serverBar = document.getElementById('serverBar');
+const serverAddr = document.getElementById('serverAddr');
+
+// Detect if running on a local server
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.match(/^192\.168\./) || window.location.hostname.match(/^10\./) || window.location.hostname.match(/^172\./)) {
+  const addr = `${window.location.protocol}//${window.location.hostname}:${window.location.port || 80}${window.location.pathname}`;
+  serverAddr.textContent = addr;
+  serverBar.classList.add('visible');
+}
+
+// Copy address on click
+serverAddr.addEventListener('click', () => {
+  navigator.clipboard.writeText(serverAddr.textContent).then(() => {
+    const orig = serverAddr.textContent;
+    serverAddr.textContent = '已复制！';
+    setTimeout(() => { serverAddr.textContent = orig; }, 1500);
+  });
+});
+</script>
+
+</body>
+</html>
